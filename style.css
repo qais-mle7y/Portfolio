@@ -1,0 +1,239 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Calibre, "San Francisco", "SF Pro Text", -apple-system, system-ui, BlinkMacSystemFont, Roboto, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 250px;
+    background-color: black;
+
+}
+
+.logo{
+    color:#f0f0f0;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.2em;
+}
+
+.navigation a{
+    color:#f0f0f0;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding-left: 30px;
+}
+
+.navigation a:hover{
+    color: #FF3131;
+}
+
+section{
+    padding: 100px 200px;
+}
+
+.hero-container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: url(images/hero.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overline{
+    font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
+    color: black;
+    margin: 0px 0px 20px 3px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hero-title{
+    font-size: 80px;
+    line-height: 1.1;
+    margin: 0px;
+    color:rgb(255, 255, 255);
+}
+
+.hero-description{
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 25px 0px 25px;
+    letter-spacing: 1px;
+}
+
+.main-btn{
+    color: #f0f0f0;
+    background-color: black;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.9575em 2.1875em;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    font-family: "Open Sans", sans-serif;
+    transition: 0.3s ease;
+}
+
+.main-btn:hover{
+    background-color: #8a0101;
+    transform: scale(1.1);
+}
+
+.social-icons a{
+    color: black;
+    font-size: 1.7em;
+    padding-right: 30px;
+}
+
+.services-cards{
+    background-color: black;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    color: #f0f0f0;
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #f0f0f0;
+}
+
+.card{
+    width: 23em;
+    box-shadow: 0 5px 25px rgba(206, 206, 206, 0.15);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card-icon{
+    font-size: 8em;
+    text-align: center;
+    color: #FF3131;
+}
+
+.card-description{
+   text-align: center;
+}
+
+.card-description h3{
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 10px;
+}
+.projects{
+    background-color: black;
+}
+
+.projects .content{
+    margin-top: 30px;
+}
+
+.project-card{
+    background-color: black;
+    box-shadow: 0 5px 25px rgba(206, 206, 206, 0.15);
+    min-height: 14em;
+    width: 30em;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 20px;
+    transition: 0.7s ease;
+}
+
+.project-card:hover{
+    transform: scale(1.1);
+}
+
+.project-card:hover .project-image{
+    opacity: 0.9;
+}
+
+.project-image img{
+    width: 100%;
+}
+
+.project-info{
+    padding: 1em;
+}
+
+.project-category{
+    font-size: 0.8em;
+}
+
+.project-title{
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.more-details{
+    color: #FF3131;
+}
+
+.more-details:hover{
+    color: #8a0101;
+}
+
+.contact{
+    background-color: black;
+}
+
+.contact .card-icon{
+    font-size: 4.5em;
+}
+
+.contact .card-description p{
+    font-size: 1.3em;
+}
+
+.footer{
+    background-color: #FF3131;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-title{
+    font-size: 1.3em;
+    font-weight: 600;
+    color:rgb(255, 255, 255);
+}
+
+.footer .social-icons a{
+    font-size: 1.3em;
+    padding: 0 25px 0 0;
+}
