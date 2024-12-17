@@ -1,7 +1,8 @@
 import React from 'react';
 import ProjectCard from '../components/portfolio/ProjectCard';
 import campusSafetyImage from '../assets/campusSafety.png';
-import commonGrounds from '../assests/commonGrounds.png';
+import commonGrounds from '../assets/commonGrounds.png';
+import fatGuys from '../assets/fatGuys.png';
 
 const Portfolio = () => {
   const projects = [
@@ -10,7 +11,7 @@ const Portfolio = () => {
       description: 'Campus Safety is a cutting-edge web application designed to revolutionize campus safety by providing real-time tools and resources for students, staff, and security personnel. This innovative platform empowers users with instant access to emergency alerts, live updates on incidents, and direct reporting capabilities.',
       image: campusSafetyImage,
       technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Express'],
-      githubUrl: 'https://github.com/danishx99/campus-safety-app',
+      githubUrl: 'https://github.com/qais-mle7y/campus-safety-app',
       demoUrl: 'https://campus-safety.azurewebsites.net/login',
     },
     {
@@ -18,17 +19,17 @@ const Portfolio = () => {
       description: 'This project aims to equip the body corporates of sectional titles with a platform that seeks to make the execution of their responsibilities easy and seamless.',
       image: commonGrounds,
       technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Express'],
-      githubUrl: 'https://github.com/danishx99/common-grounds-app',
-      demoUrl: '',
+      githubUrl: 'https://github.com/qais-mle7y/common-grounds-app',
+      demoUrl: 'https://common-grounds-app.onrender.com/',
     },
-    // {
-    //   title: 'Weather Dashboard',
-    //   description: 'A weather application that displays forecast data using external APIs',
-    //   image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=1000',
-    //   technologies: ['React', 'OpenWeather API', 'Tailwind CSS'],
-    //   githubUrl: 'https://github.com',
-    //   demoUrl: 'https://demo.com',
-    // },
+    {
+      title: 'Fat Guys - 3D Platformer Game',
+      description: 'Fat Guys is a 3D platformer game, inspired by Fall Guys, built with Three.js that challenges players to navigate through dynamic levels while racing against the clock.',
+      image: fatGuys,
+      technologies: ['JavaScript', 'THREE.js', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/qais-mle7y/fat-guys',
+      demoUrl: 'https://lamp.ms.wits.ac.za/~schickentendies/',
+    },
   ];
 
   return (
