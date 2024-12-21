@@ -12,7 +12,7 @@ const Portfolio = () => {
       image: campusSafetyImage,
       technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Express'],
       githubUrl: 'https://github.com/qais-mle7y/campus-safety-app',
-      demoUrl: 'https://campus-safety.azurewebsites.net/login',
+      demoUrl: 'https://campus-safety.azurewebsites.net/',
     },
     {
       title: 'Common Grounds App',
