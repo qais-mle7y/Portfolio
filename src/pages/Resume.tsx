@@ -33,7 +33,11 @@ const Resume = () => {
               <div className="border-l-2 border-gray-200 pl-4">
                 <div className="mb-4">
                   <h3 className="text-lg font-medium text-gray-900">Bachelor of Science in Computer Science</h3>
-                  <p className="text-gray-600">University of the Witwatersrand • 2022 - Present</p>
+                  <p className="text-gray-600">University of the Witwatersrand • 2022 - 2024</p>
+                </div>
+                <div className="mb-4">
+                  <h3 className="text-lg font-medium text-gray-900">High School Diploma</h3>
+                  <p className="text-gray-600">North American International School • 2018 - 2021</p>
                 </div>
               </div>
             </section>
