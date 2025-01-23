@@ -3,6 +3,7 @@ import ProjectCard from '../components/portfolio/ProjectCard';
 import campusSafetyImage from '../assets/campusSafety.png';
 import commonGrounds from '../assets/commonGrounds.png';
 import fatGuys from '../assets/fatGuys.png';
+import tarkovQuestFinder from '../assets/tarkovQuestFinder.png';
 
 const Portfolio = () => {
   const projects = [
@@ -29,6 +30,14 @@ const Portfolio = () => {
       technologies: ['JavaScript', 'THREE.js', 'Tailwind CSS'],
       githubUrl: 'https://github.com/qais-mle7y/fat-guys',
       demoUrl: 'https://lamp.ms.wits.ac.za/~schickentendies/',
+    },
+    {
+      title: 'Tarkov Quest Finder Chrome Extension',
+      description: 'Tarkov Quest Finder is a Chrome extension that provides instant access to Escape from Tarkov quest information. Using the official tarkov.dev API, this extension offers real-time quest searching and detailed information right in your browser.',
+      image: tarkovQuestFinder,
+      technologies: ['JavaScript', 'GraphQL API', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/qais-mle7y/tarkov-quest-finder-extension',
+      demoUrl: '',
     },
   ];
 
