@@ -1,10 +1,9 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TechStack from './TechStack';
 import Stats from './Stats';
-import resumePDF from '../../assets/Mhd_Qais_Alsaleh_CV.pdf';
-import profilePic from '../../assets/mypfp.png';
+import profilePic from '../../assets/Qais_Profile_Picture.png';
+import resumePDF from '../../assets/CV.pdf';
 
 const Hero = () => {
   const handleDownload = () => {
@@ -17,62 +16,68 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative bg-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-indigo/[0.05] [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.5))]" />
-      
-      <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+    <section className="relative bg-white dark:bg-neutral-950 overflow-hidden transition-colors">
+      {/* Animated dot grid */}
+      <div className="absolute inset-0 dot-grid pointer-events-none" />
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pt-20 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
           {/* Profile Image */}
-          <div className="flex justify-center mt-16 mb-8">
-            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg">
+          <div className="flex justify-center mb-8 hero-enter">
+            <div className="float w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-2 ring-neutral-200 dark:ring-neutral-700 ring-offset-4 ring-offset-white dark:ring-offset-neutral-950">
               <img
                 src={profilePic}
-                alt="Profile"
+                alt="Mhd Qais Alsaleh"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
 
-          <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
-            <div className="text-center">
-              <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block">Hi, I'm Qais</span>
-                <span className="block text-indigo-600">Software Developer</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl">
-                Aspiring Software Developer with a Passion for Building Innovative Solutions
-              </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
-                <div className="rounded-md shadow">
-                  <Link
-                    to="/portfolio"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                  >
-                    View My Work
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <button
-                    onClick={handleDownload}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
-                  >
-                    Download Resume
-                  </button>
-                </div>
-              </div>
+          {/* Content */}
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="hero-enter-delay-1 text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-5xl">
+              Mhd Qais Alsaleh
+            </h1>
+            <p className="hero-enter-delay-1 mt-2 text-lg font-medium text-neutral-500 dark:text-neutral-400 sm:text-xl">
+              Full-Stack Developer
+            </p>
+            <p className="hero-enter-delay-2 mt-6 text-base leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-lg">
+              Computer Science Honours student at the University of Pretoria with a focus
+              on full-stack and cloud development. I build production-ready apps in React,
+              Node.js, Python, and .NET Core, deployed to Azure with CI/CD automation.
+            </p>
 
-              {/* Stats Section */}
-              {/* <Stats /> */}
-
-              {/* Tech Stack Grid */}
-              <TechStack />
+            {/* CTA Buttons */}
+            <div className="hero-enter-delay-3 mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                to="/portfolio"
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                View My Work
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+              <button
+                onClick={handleDownload}
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                <Download className="mr-2 w-4 h-4" />
+                Download CV
+              </button>
             </div>
-          </main>
+          </div>
+
+          {/* Stats */}
+          <div className="hero-enter-delay-4">
+            <Stats />
+          </div>
+
+          {/* Tech Stack */}
+          <div className="hero-enter-delay-4">
+            <TechStack />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

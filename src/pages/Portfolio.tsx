@@ -1,60 +1,122 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import ProjectCard from '../components/portfolio/ProjectCard';
-import campusSafetyImage from '../assets/campusSafety.png';
-import commonGrounds from '../assets/commonGrounds.png';
-import fatGuys from '../assets/fatGuys.png';
-import tarkovQuestFinder from '../assets/tarkovQuestFinder.png';
+import { projects as projectConfigs, GITHUB_USERNAME } from '../data/projects';
+import type { ProjectConfig } from '../data/projects';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
+interface GitHubRepo {
+  name: string;
+  html_url: string;
+  description: string | null;
+  homepage: string | null;
+}
+
+interface MergedProject {
+  title: string;
+  description: string;
+  technologies?: string[];
+  githubUrl: string;
+  demoUrl?: string;
+}
+
+function mergeProjects(
+  configs: ProjectConfig[],
+  repos: GitHubRepo[]
+): MergedProject[] {
+  const repoMap = new Map<string, GitHubRepo>();
+  for (const repo of repos) {
+    repoMap.set(repo.name, repo);
+  }
+
+  return configs.map((cfg) => {
+    const repo = repoMap.get(cfg.repo);
+    const githubUrl =
+      repo?.html_url ?? `https://github.com/${GITHUB_USERNAME}/${cfg.repo}`;
+
+    return {
+      title: cfg.title ?? formatRepoName(cfg.repo),
+      description:
+        cfg.description ?? repo?.description ?? 'No description available.',
+      technologies: cfg.technologies,
+      githubUrl,
+      demoUrl: cfg.demoUrl,
+    };
+  });
+}
+
+function formatRepoName(repo: string): string {
+  return repo
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
 const Portfolio = () => {
-  const projects = [
-    {
-      title: 'Campus Safety App',
-      description: 'Campus Safety is a cutting-edge web application designed to revolutionize campus safety by providing real-time tools and resources for students, staff, and security personnel. This innovative platform empowers users with instant access to emergency alerts, live updates on incidents, and direct reporting capabilities.',
-      image: campusSafetyImage,
-      technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Express'],
-      githubUrl: 'https://github.com/qais-mle7y/campus-safety-app',
-      demoUrl: 'https://campus-safety.azurewebsites.net/',
-    },
-    {
-      title: 'Common Grounds App',
-      description: 'This project aims to equip the body corporates of sectional titles with a platform that seeks to make the execution of their responsibilities easy and seamless.',
-      image: commonGrounds,
-      technologies: ['JavaScript', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Express'],
-      githubUrl: 'https://github.com/qais-mle7y/common-grounds-app',
-      demoUrl: 'https://common-grounds-app.onrender.com/',
-    },
-    {
-      title: 'Fat Guys - 3D Platformer Game',
-      description: 'Fat Guys is a 3D platformer game, inspired by Fall Guys, built with Three.js that challenges players to navigate through dynamic levels while racing against the clock.',
-      image: fatGuys,
-      technologies: ['JavaScript', 'THREE.js', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/qais-mle7y/fat-guys',
-      demoUrl: 'https://lamp.ms.wits.ac.za/~schickentendies/',
-    },
-    {
-      title: 'Tarkov Quest Finder Chrome Extension',
-      description: 'Tarkov Quest Finder is a Chrome extension that provides instant access to Escape from Tarkov quest information. Using the official tarkov.dev API, this extension offers real-time quest searching and detailed information right in your browser.',
-      image: tarkovQuestFinder,
-      technologies: ['JavaScript', 'GraphQL API', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/qais-mle7y/tarkov-quest-finder-extension',
-      demoUrl: '',
-    },
-  ];
+  const [projects, setProjects] = useState<MergedProject[]>([]);
+  const [loading, setLoading] = useState(true);
+  const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal();
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchRepos() {
+      try {
+        const res = await fetch(
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
+          { signal: controller.signal }
+        );
+        if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+        const repos: GitHubRepo[] = await res.json();
+        setProjects(mergeProjects(projectConfigs, repos));
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Failed to fetch GitHub repos:', err);
+          setProjects(mergeProjects(projectConfigs, []));
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRepos();
+    return () => controller.abort();
+  }, []);
 
   return (
     <div className="min-h-screen py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">My Projects</h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Here are some of my recent projects that showcase my skills and experience.
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={headerRef} className="reveal text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+            Projects
+          </h2>
+          <p className="mt-3 text-base text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto">
+            A selection of recent work showcasing full-stack development, game
+            development, and browser extensions.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
-        </div>
+
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[...Array(4)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden animate-pulse"
+              >
+                <div className="p-5 space-y-3">
+                  <div className="h-5 bg-neutral-100 dark:bg-neutral-800 rounded w-2/3" />
+                  <div className="h-3 bg-neutral-100 dark:bg-neutral-800 rounded w-full" />
+                  <div className="h-3 bg-neutral-100 dark:bg-neutral-800 rounded w-4/5" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div ref={gridRef} className="reveal-group grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
