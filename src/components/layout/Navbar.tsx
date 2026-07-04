@@ -1,28 +1,28 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Code2, User, Briefcase, FileText } from 'lucide-react';
+import { BookOpen, Code2, FolderGit2 } from 'lucide-react';
 import MobileNav from './MobileNav';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
     { to: '/', icon: <Code2 className="w-4 h-4" />, text: 'Home' },
-    { to: '/about', icon: <User className="w-4 h-4" />, text: 'About' },
-    { to: '/portfolio', icon: <Briefcase className="w-4 h-4" />, text: 'Portfolio' },
-    { to: '/resume', icon: <FileText className="w-4 h-4" />, text: 'Resume' },
+    { to: '/projects', icon: <FolderGit2 className="w-4 h-4" />, text: 'Projects' },
+    { to: '/education', icon: <BookOpen className="w-4 h-4" />, text: 'Education' },
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 z-50 transition-colors">
+    <nav className="fixed top-0 z-50 w-full border-b border-zinc-200 bg-zinc-50/90 backdrop-blur-md transition-colors dark:border-zinc-800 dark:bg-zinc-950/90">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex h-16 justify-between">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+            <Link to="/" className="text-base font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
               Mhd Qais Alsaleh
             </Link>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <MobileNav />
 
             <div className="hidden sm:flex sm:items-center sm:space-x-1">
@@ -32,10 +32,10 @@ const Navbar = () => {
                   <Link
                     key={item.to}
                     to={item.to}
-                    className={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                    className={`inline-flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                       isActive
-                        ? 'text-neutral-900 bg-neutral-100 dark:text-neutral-100 dark:bg-neutral-800'
-                        : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800'
+                        ? 'bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-950'
+                        : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-50'
                     }`}
                   >
                     {item.icon}
@@ -44,6 +44,7 @@ const Navbar = () => {
                 );
               })}
             </div>
+            <ThemeToggle />
           </div>
         </div>
       </div>

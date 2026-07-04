@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,50 +10,23 @@
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-900 font-sans antialiased;
-    @apply dark:bg-neutral-950 dark:text-neutral-100;
+    @apply bg-zinc-50 text-zinc-950 font-sans antialiased;
+    @apply dark:bg-zinc-950 dark:text-zinc-50;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-}
 
-/* ── Animated dot grid background ────────────────────────── */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-  animation: drift 20s linear infinite;
-}
-
-:is(.dark .dot-grid) {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-}
-
-@keyframes drift {
-  from {
-    background-position: 0 0;
+  ::selection {
+    @apply bg-blue-200 text-zinc-950 dark:bg-blue-500 dark:text-white;
   }
-  to {
-    background-position: 24px 48px;
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-blue-600 dark:outline-blue-400;
   }
 }
 
-/* ── Gentle float for profile image ──────────────────────── */
-.float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* ── Scroll-reveal: fade up ──────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(18px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -60,7 +35,6 @@
   transform: translateY(0);
 }
 
-/* Stagger children inside a reveal-group */
 .reveal-group > * {
   opacity: 0;
   transform: translateY(16px);
@@ -81,7 +55,6 @@
 .reveal-group.visible > *:nth-child(7) { transition-delay: 480ms; }
 .reveal-group.visible > *:nth-child(8) { transition-delay: 560ms; }
 
-/* ── Hero entrance (plays once on load) ──────────────────── */
 .hero-enter {
   animation: heroFadeUp 0.8s ease-out both;
 }
@@ -110,5 +83,26 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-group > * {
+    opacity: 1;
+    transform: none;
   }
 }

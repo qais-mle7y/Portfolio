@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Resume from './pages/Resume';
 
@@ -14,9 +13,11 @@ function App() {
         <main className="flex-grow pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/resume" element={<Resume />} />
+            <Route path="/projects" element={<Portfolio />} />
+            <Route path="/education" element={<Resume />} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
+            <Route path="/portfolio" element={<Navigate to="/projects" replace />} />
+            <Route path="/resume" element={<Navigate to="/education" replace />} />
           </Routes>
         </main>
         <Footer />

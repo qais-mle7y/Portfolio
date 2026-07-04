@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react';
-import resumePDF from '../assets/CV.pdf';
+import resumePDF from '../assets/MhdQaisAlsaleh_CV.pdf';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const Resume = () => {
@@ -15,90 +15,112 @@ const Resume = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={cardRef} className="reveal bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden transition-colors">
-          <div className="p-8 sm:p-10">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-10">
+    <div className="min-h-screen bg-zinc-50 py-20 dark:bg-zinc-950">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div ref={cardRef} className="reveal overflow-hidden rounded-xl border border-zinc-200 bg-white transition-colors dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="p-6 sm:p-10">
+            <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Mhd Qais Alsaleh</h1>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Full-Stack Developer</p>
+                <h1 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Education</h1>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                  Academic background, distinction coursework, and research work from my honours year.
+                </p>
               </div>
               <button
+                type="button"
                 onClick={handleDownload}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-800 active:scale-[0.98] dark:bg-blue-500 dark:hover:bg-blue-400"
               >
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="mr-2 h-4 w-4" />
                 Download PDF
               </button>
             </div>
 
             <section className="mb-10">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-4">
+              <h2 className="mb-4 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                 Education
               </h2>
-              <div className="space-y-5 border-l-2 border-neutral-200 dark:border-neutral-700 pl-5">
-                <div>
-                  <h3 className="text-base font-medium text-neutral-900 dark:text-neutral-100">
-                    Honours in Computer Science
+              <div className="space-y-5">
+                <div className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
+                  <h3 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">
+                    BSc Honours in Computer Science
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    University of Pretoria &middot; 2025 &ndash; Present
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    University of Pretoria, 2025 - 2026
                   </p>
+                  <ul className="mt-4 space-y-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">
+                    <li>COS781 Data Mining: 82, pass with distinction</li>
+                    <li>COS760 Natural Language Processing: pass with distinction</li>
+                    <li>COS700 Research Report: Automated Assessment of Algorithmic Thinking Using Flowcharts</li>
+                  </ul>
                 </div>
-                <div>
-                  <h3 className="text-base font-medium text-neutral-900 dark:text-neutral-100">
-                    Bachelor of Science in Computer Science
+                <div className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
+                  <h3 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">
+                    BSc in Computer Science
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    University of the Witwatersrand &middot; 2022 &ndash; 2024
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-base font-medium text-neutral-900 dark:text-neutral-100">
-                    High School Diploma
-                  </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    North American International School &middot; 2018 &ndash; 2021
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    University of the Witwatersrand, 2022 - 2024
                   </p>
                 </div>
               </div>
             </section>
 
+            <section className="mb-10">
+              <h2 className="mb-4 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+                Research
+              </h2>
+              <div className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
+                <h3 className="text-base font-semibold text-zinc-950 dark:text-zinc-50">
+                  Flowchart Analysis Tool
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-zinc-700 dark:text-zinc-300">
+                  Built as part of honours research into automated assessment of algorithmic thinking. The tool parses flowchart diagrams, constructs graph representations, checks logical structure, and provides formative feedback before code is written.
+                </p>
+                <a
+                  href="https://github.com/qais-mle7y/flowchart-analysis-tool"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-sm font-semibold text-blue-700 transition hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200"
+                >
+                  View repository
+                </a>
+              </div>
+            </section>
+
             <section>
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-4">
+              <h2 className="mb-4 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                 Skills
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
-                  <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="mb-1 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                     Programming Languages
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                     JavaScript, TypeScript, Python, Java, C#, SQL
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="mb-1 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                     Frontend
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                     React, Tailwind CSS, Three.js, Chart.js
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="mb-1 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                     Backend &amp; Cloud
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                     Node.js, Express, FastAPI, .NET Core, MongoDB, SQLite, GraphQL, Azure
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="mb-1 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
                     DevOps &amp; Tools
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
                     Git, Docker, CI/CD, VS Code, Linux
                   </p>
                 </div>
