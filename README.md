@@ -2,7 +2,17 @@
 
 Personal portfolio website showcasing projects, skills, and experience as a full-stack developer.
 
+[![Live Demo](https://img.shields.io/badge/Live-View_Site-blue?style=for-the-badge)](https://mhd-qais-alsaleh.netlify.app/)
+
 Built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**.
+
+## Features
+
+- **Project Showcase**: Curated list of my highlighted projects.
+- **Skills Overview**: Detailed breakdown of my technical proficiencies.
+- **Responsive Design**: Fully responsive layout tailored for desktop and mobile devices.
+- **Downloadable CV**: Easy access to my up-to-date resume.
+
 
 ## Getting Started
 
@@ -39,12 +49,9 @@ npm run preview
 ```
 src/
 ├── assets/              # Images, CV, and static files
-├── components/
-│   ├── about/           # Skills component
-│   ├── contact/         # Contact form
-│   ├── home/            # Hero, Stats, TechStack
-│   ├── layout/          # Navbar, Footer, MobileNav
-│   └── portfolio/       # ProjectCard
+├── components/          # Reusable UI components by feature
+├── data/                # Static data (e.g., project lists)
+├── hooks/               # Custom React hooks
 ├── pages/               # Route-level page components
 ├── types/               # TypeScript declaration files
 ├── App.tsx              # Root component with routing
